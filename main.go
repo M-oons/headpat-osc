@@ -7,5 +7,6 @@ import (
 
 func main() {
 	database.SetupDatabase()
+	vrc.SetupHeadpats()
 	vrc.SetupOsc()
 }

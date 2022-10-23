@@ -5,8 +5,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/m-oons/headpat-osc/database"
 )
 
 const maxMessageLength = 144
@@ -45,12 +43,12 @@ func getTime24h() string {
 }
 
 func getHeadpatCount() string {
-	count := database.GetHeadpatCount()
+	count := GetHeadpats()
 	return strconv.FormatInt(count, 10)
 }
 
 func getPlural() string {
-	count := database.GetHeadpatCount()
+	count := GetHeadpats()
 	if count == 1 {
 		return ""
 	}
