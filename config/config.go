@@ -16,8 +16,9 @@ type Config struct {
 }
 
 type ConfigOsc struct {
-	Host string `json:"host"`
-	Port uint16 `json:"port"`
+	Host        string `json:"host"`
+	SendPort    uint16 `json:"sendPort"`
+	ReceivePort uint16 `json:"receivePort"`
 }
 
 type ConfigHeadpat struct {
@@ -71,8 +72,9 @@ func Save(config Config) {
 func defaultConfig() Config {
 	return Config{
 		Osc: ConfigOsc{
-			Host: "127.0.0.1",
-			Port: 9001,
+			Host:        "127.0.0.1",
+			SendPort:    9000,
+			ReceivePort: 9001,
 		},
 		Headpat: ConfigHeadpat{
 			Message: "{{count}} headpat{{plural}}",
