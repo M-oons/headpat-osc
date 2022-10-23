@@ -38,7 +38,6 @@ func Load() {
 	d, err := os.ReadFile(fmt.Sprintf("%s/config.json", dir))
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {
-			log.Printf("Config file doesn't exist, creating default config")
 			config = defaultConfig()
 		} else {
 			log.Fatalf("Error reading config: %v", err)
