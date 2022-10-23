@@ -14,6 +14,7 @@ const inputAddress = "/chatbox/input"
 var Client *osc.Client
 
 var lastMessage time.Time
+var messageLimit = time.Second * 2
 
 func SetupOsc() {
 	Client = osc.NewClient(config.Current.Osc.Host, int(config.Current.Osc.SendPort))
@@ -47,7 +48,7 @@ func SetupOsc() {
 }
 
 func SendMessage(text string) error {
-	if time.Since(lastMessage) < time.Second { // rate limit
+	if time.Since(lastMessage) < messageLimit { // rate limit
 		return nil
 	}
 
